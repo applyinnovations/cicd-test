@@ -2,7 +2,11 @@ services:
   grafana:
     image: grafana/grafana-enterprise
     restart: unless-stopped
-    ports:
-      - '3001:3000'
     volumes:
       - "./grafana.ini:/etc/grafana/grafana.ini"
+    networks:
+      - grafana
+
+# RESTRICTION: must declare a network
+networks:
+  grafana:
